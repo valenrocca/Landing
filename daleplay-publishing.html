@@ -164,6 +164,13 @@
     animation: fadeUp .8s .6s forwards;
   }
 
+  .hero-logo {
+    justify-content: center;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp .8s .35s forwards;
+  }
+
   .scroll-hint {
     margin-top: 80px;
     display: flex;
@@ -216,6 +223,54 @@
     flex: 1;
     height: 1px;
     background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .roster-search-wrap {
+    max-width: 520px;
+    margin: 0 auto 28px;
+    width: 100%;
+  }
+
+  .roster-search {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .roster-search::placeholder {
+    color: var(--text-muted);
+  }
+
+  .roster-search:focus {
+    border-color: rgba(245,166,35,0.45);
+    box-shadow: 0 0 0 3px rgba(245,166,35,0.12);
+  }
+
+  .roster-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 16px;
+    color: var(--text-muted);
+    font-size: 15px;
   }
 
   /* ARTIST GRID */
@@ -432,25 +487,43 @@
     </span>
   </a>
   <ul>
-    <li><a href="#argentina">Argentina</a></li>
-    <li><a href="#chile">Chile</a></li>
-    <li><a href="#uruguay">Uruguay</a></li>
-    <li><a href="#mexico">México</a></li>
-    <li><a href="#spain">Spain</a></li>
+    <li><a href="#artistas">Artistas</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <p class="hero-eyebrow">Nuestros Artistas</p>
-  <h1>DALE PLAY</h1>
-  <p class="hero-sub">Publishing</p>
+  <a href="#" class="logo hero-logo" aria-label="Dale Play Publishing">
+    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 C8 8, 18 14, 18 20 C18 26, 8 32, 8 32 Z" fill="url(#g1-hero)"/>
+      <path d="M16 11 C16 11, 26 16, 26 20 C26 24, 16 29, 16 29 Z" fill="url(#g2-hero)"/>
+      <path d="M24 14 C24 14, 34 18, 34 20 C34 22, 24 26, 24 26 Z" fill="url(#g3-hero)"/>
+      <defs>
+        <linearGradient id="g1-hero" x1="8" y1="8" x2="18" y2="32" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#E8357A"/>
+          <stop offset="100%" stop-color="#F5A623"/>
+        </linearGradient>
+        <linearGradient id="g2-hero" x1="16" y1="11" x2="26" y2="29" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#F07040"/>
+          <stop offset="100%" stop-color="#F5A623"/>
+        </linearGradient>
+        <linearGradient id="g3-hero" x1="24" y1="14" x2="34" y2="26" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#F5A623"/>
+          <stop offset="100%" stop-color="#FAC050"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <span class="logo-text">
+      <span>Dale Play</span>
+      <span>Publishing</span>
+    </span>
+  </a>
   <p class="hero-desc">
-    El hogar de los productores y compositores más importantes de habla hispana.
+    El hogar de los autores, compositores y productores de habla hispana más importantes
   </p>
   <p class="hero-desc" style="margin-top: 12px; font-size: 13px; letter-spacing: 2px;">
-    Argentina · Chile · Uruguay · México · España
+    Argentina · Chile · Uruguay · España
   </p>
   <div class="scroll-hint">
     <span>Explorar</span>
@@ -458,16 +531,19 @@
   </div>
 </section>
 
-<!-- ARGENTINA 1 -->
-<section class="section" id="argentina">
+<!-- ARTISTAS -->
+<section class="section" id="artistas">
+  <div class="roster-search-wrap reveal">
+    <label for="artist-search" class="visually-hidden">Buscar artistas por nombre o país</label>
+    <input type="search" id="artist-search" class="roster-search" placeholder="Buscar por nombre o país..." autocomplete="off" spellcheck="false">
+  </div>
   <div class="section-header reveal">
-    <span class="flag">🇦🇷</span>
-    <h2 class="section-title">Argentina</h2>
+    <h2 class="section-title">Artistas</h2>
     <div class="section-line"></div>
   </div>
   <div class="artist-grid reveal">
-
-    <div class="artist-card">
+    <p id="roster-empty" class="roster-empty" hidden role="status"></p>
+<div class="artist-card">
       <div class="artist-placeholder">BZ</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -475,8 +551,7 @@
         <span class="artist-badge">Producer</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">NN</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -484,8 +559,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">YS</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -493,8 +567,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">SA</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -502,8 +575,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">SS</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -511,8 +583,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">AC</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -520,8 +591,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">DP</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -529,8 +599,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">TC</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -538,8 +607,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">BM</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -547,8 +615,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">DM</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -556,8 +623,7 @@
         <span class="artist-badge">Producer</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">RE</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -565,8 +631,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">AN</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -574,8 +639,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">TX</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -583,8 +647,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">EZ</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -592,8 +655,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">CG</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -601,8 +663,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">JC</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -610,8 +671,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">AK</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -619,8 +679,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">MS</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -628,8 +687,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">AR</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -637,8 +695,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">AF</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -646,8 +703,7 @@
         <span class="artist-badge">Producer</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">HP</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -655,8 +711,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">ME</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -664,8 +719,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">DB</div>
       <div class="artist-info">
         <div class="artist-country">Argentina</div>
@@ -673,22 +727,7 @@
         <span class="artist-badge">Producer</span>
       </div>
     </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CHILE -->
-<section class="section" id="chile">
-  <div class="section-header reveal">
-    <span class="flag">🇨🇱</span>
-    <h2 class="section-title">Chile</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="artist-grid reveal">
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">VC</div>
       <div class="artist-info">
         <div class="artist-country">Chile</div>
@@ -696,8 +735,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">EB</div>
       <div class="artist-info">
         <div class="artist-country">Chile</div>
@@ -705,22 +743,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- URUGUAY -->
-<section class="section" id="uruguay">
-  <div class="section-header reveal">
-    <span class="flag">🇺🇾</span>
-    <h2 class="section-title">Uruguay</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="artist-grid reveal">
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">BA</div>
       <div class="artist-info">
         <div class="artist-country">Uruguay</div>
@@ -728,8 +751,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">KN</div>
       <div class="artist-info">
         <div class="artist-country">Uruguay</div>
@@ -737,8 +759,7 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">ZB</div>
       <div class="artist-info">
         <div class="artist-country">Uruguay</div>
@@ -746,152 +767,62 @@
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- MEXICO -->
-<section class="section" id="mexico">
-  <div class="section-header reveal">
-    <span class="flag">🇲🇽</span>
-    <h2 class="section-title">México</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="artist-grid reveal">
-
-    <div class="artist-card">
-      <div class="artist-placeholder">DC</div>
-      <div class="artist-info">
-        <div class="artist-country">México</div>
-        <div class="artist-name">Dicapo</div>
-        <span class="artist-badge">Artist</span>
-      </div>
-    </div>
-
-    <div class="artist-card">
-      <div class="artist-placeholder">LN</div>
-      <div class="artist-info">
-        <div class="artist-country">México</div>
-        <div class="artist-name">Luno</div>
-        <span class="artist-badge">Artist</span>
-      </div>
-    </div>
-
-    <div class="artist-card">
-      <div class="artist-placeholder">CU</div>
-      <div class="artist-info">
-        <div class="artist-country">México</div>
-        <div class="artist-name">Cuauh</div>
-        <span class="artist-badge">Artist</span>
-      </div>
-    </div>
-
-    <div class="artist-card">
-      <div class="artist-placeholder">MR</div>
-      <div class="artist-info">
-        <div class="artist-country">México</div>
-        <div class="artist-name">Mérida</div>
-        <span class="artist-badge">Artist</span>
-      </div>
-    </div>
-
-    <div class="artist-card">
-      <div class="artist-placeholder">JN</div>
-      <div class="artist-info">
-        <div class="artist-country">México</div>
-        <div class="artist-name">Jorge Nehme</div>
-        <span class="artist-badge">Producer</span>
-      </div>
-    </div>
-
-    <div class="artist-card">
-      <div class="artist-placeholder">JV</div>
-      <div class="artist-info">
-        <div class="artist-country">México</div>
-        <div class="artist-name">Jaime Velazquez</div>
-        <span class="artist-badge">Producer</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SPAIN -->
-<section class="section" id="spain">
-  <div class="section-header reveal">
-    <span class="flag">🇪🇸</span>
-    <h2 class="section-title">Spain</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="artist-grid reveal">
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">DL</div>
       <div class="artist-info">
-        <div class="artist-country">Spain</div>
+        <div class="artist-country">España</div>
         <div class="artist-name">Delaossa</div>
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">KD</div>
       <div class="artist-info">
-        <div class="artist-country">Spain</div>
+        <div class="artist-country">España</div>
         <div class="artist-name">Kiddo</div>
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">AB</div>
       <div class="artist-info">
-        <div class="artist-country">Spain</div>
+        <div class="artist-country">España</div>
         <div class="artist-name">Abhir</div>
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">BB</div>
       <div class="artist-info">
-        <div class="artist-country">Spain</div>
+        <div class="artist-country">España</div>
         <div class="artist-name">Barry B</div>
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">TS</div>
       <div class="artist-info">
-        <div class="artist-country">Spain</div>
+        <div class="artist-country">España</div>
         <div class="artist-name">Tuiste</div>
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">MY</div>
       <div class="artist-info">
-        <div class="artist-country">Spain</div>
+        <div class="artist-country">España</div>
         <div class="artist-name">Mayo</div>
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
-    <div class="artist-card">
+<div class="artist-card">
       <div class="artist-placeholder">GD</div>
       <div class="artist-info">
-        <div class="artist-country">Spain</div>
+        <div class="artist-country">España</div>
         <div class="artist-name">Gara Durán</div>
         <span class="artist-badge">Artist</span>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -933,6 +864,40 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => observer.observe(el));
+
+  (function () {
+    const root = document.getElementById('artistas');
+    if (!root) return;
+    const input = document.getElementById('artist-search');
+    const grid = root.querySelector('.artist-grid');
+    const empty = document.getElementById('roster-empty');
+    if (!input || !grid) return;
+
+    function filterRoster() {
+      const q = input.value.trim().toLowerCase();
+      const cards = grid.querySelectorAll('.artist-card');
+      let visible = 0;
+      cards.forEach(function (card) {
+        var nameEl = card.querySelector('.artist-name');
+        var countryEl = card.querySelector('.artist-country');
+        var name = nameEl ? nameEl.textContent.toLowerCase() : '';
+        var country = countryEl ? countryEl.textContent.toLowerCase() : '';
+        var show = !q || name.indexOf(q) !== -1 || country.indexOf(q) !== -1;
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      if (empty) {
+        if (q && visible === 0) {
+          empty.hidden = false;
+          empty.textContent = 'No se encontraron artistas para "' + input.value.trim() + '".';
+        } else {
+          empty.hidden = true;
+          empty.textContent = '';
+        }
+      }
+    }
+    input.addEventListener('input', filterRoster);
+  })();
 </script>
 </body>
 </html>

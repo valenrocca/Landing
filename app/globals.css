@@ -131,39 +131,25 @@ nav ul a:hover {
   pointer-events: none;
 }
 
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--dp-orange);
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.2s forwards;
-}
-
-.hero h1 {
-  font-family: var(--font-bebas), sans-serif;
-  font-size: clamp(72px, 12vw, 160px);
-  line-height: 0.9;
-  letter-spacing: 2px;
-  background: var(--dp-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-logo {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: min(99vw, 1440px);
+  margin-inline: auto;
+  margin-bottom: 10px;
   opacity: 0;
   animation: fadeUp 0.8s 0.35s forwards;
 }
 
-.hero-sub {
-  font-family: var(--font-bebas), sans-serif;
-  font-size: clamp(40px, 6vw, 80px);
-  line-height: 0.9;
-  letter-spacing: 2px;
-  color: white;
-  margin-top: -8px;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.45s forwards;
+.hero-logo .logo-image-wrap {
+  width: min(99vw, 1440px);
+  height: calc(min(99vw, 1440px) * 72 / 390);
+  margin-inline: auto;
+}
+
+.hero-logo .logo-image {
+  object-position: center center;
 }
 
 .hero-desc {
@@ -235,6 +221,59 @@ nav ul a:hover {
   flex: 1;
   height: 1px;
   background: linear-gradient(to right, var(--border), transparent);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.roster-search-wrap {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  width: 100%;
+}
+
+.roster-search {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.roster-search::placeholder {
+  color: var(--text-muted);
+}
+
+.roster-search:focus {
+  border-color: rgba(245, 166, 35, 0.45);
+  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.12);
+}
+
+.roster-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 /* ARTIST GRID */
@@ -486,9 +525,14 @@ footer {
     padding: 16px 24px;
   }
 
-  .logo-image-wrap {
+  nav .logo-image-wrap {
     width: min(320px, 82vw);
     height: 60px;
+  }
+
+  .hero-logo .logo-image-wrap {
+    width: min(98vw, 960px);
+    height: calc(min(98vw, 960px) * 72 / 390);
   }
 
   nav ul {

@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     template: "%s · Dale Play Publishing",
   },
   description:
-    "El hogar de los productores y compositores más importantes de habla hispana.",
+    "El hogar de los autores, compositores y productores de habla hispana más importantes",
   openGraph: {
     title: "Dale Play Publishing — Roster",
     description:
-      "El hogar de los productores y compositores más importantes de habla hispana.",
+      "El hogar de los autores, compositores y productores de habla hispana más importantes",
     locale: "es",
     type: "website",
   },

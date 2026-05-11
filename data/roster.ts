@@ -21,6 +21,8 @@ export type CountryRoster = {
   artists: RosterArtist[];
 };
 
+export type ArtistWithCountry = RosterArtist & { countryLabel: string };
+
 export const countries: CountryRoster[] = [
   {
     id: "argentina",
@@ -215,54 +217,10 @@ export const countries: CountryRoster[] = [
     ],
   },
   {
-    id: "mexico",
-    flag: "🇲🇽",
-    title: "México",
-    cardCountryLabel: "México",
-    artists: [
-      {
-        initials: "DC",
-        name: "Dicapo",
-        role: "Artist",
-        image: "/assets/dicapo-29.jpg",
-      },
-      {
-        initials: "LN",
-        name: "Luno",
-        role: "Artist",
-        image: "/assets/luno-30.jpg",
-      },
-      {
-        initials: "CU",
-        name: "Cuauh",
-        role: "Artist",
-        image: "/assets/cuauh-31.jpg",
-      },
-      {
-        initials: "MR",
-        name: "Mérida",
-        role: "Artist",
-        image: "/assets/merida-32.jpg",
-      },
-      {
-        initials: "JN",
-        name: "Jorge Nehme",
-        role: "Producer",
-        image: "/assets/jorge-nehme-33.jpg",
-      },
-      {
-        initials: "JV",
-        name: "Jaime Velazquez",
-        role: "Producer",
-        image: "/assets/jaime-velazquez-34.png",
-      },
-    ],
-  },
-  {
     id: "spain",
     flag: "🇪🇸",
-    title: "Spain",
-    cardCountryLabel: "Spain",
+    title: "España",
+    cardCountryLabel: "España",
     artists: [
       {
         initials: "DL",
@@ -309,3 +267,11 @@ export const countries: CountryRoster[] = [
     ],
   },
 ];
+
+/** Single roster list for unified “Artistas” section (order follows `countries`). */
+export const artistsFlat: ArtistWithCountry[] = countries.flatMap((country) =>
+  country.artists.map((artist) => ({
+    ...artist,
+    countryLabel: country.cardCountryLabel,
+  })),
+);
