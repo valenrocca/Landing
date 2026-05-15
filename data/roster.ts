@@ -106,7 +106,7 @@ export const countries: CountryRoster[] = [
         initials: "TX",
         name: "TadeoXQ",
         role: "Artist",
-        image: "/assets/tadeoxq-13.jpg",
+        image: "/assets/tadeoxq-13.png",
       },
       {
         initials: "EZ",
@@ -124,7 +124,7 @@ export const countries: CountryRoster[] = [
         initials: "JC",
         name: "Jacobo",
         role: "Artist",
-        image: "/assets/jacobo-16.jpg",
+        image: "/assets/jacobo-16.png",
       },
       {
         initials: "AK",
@@ -256,7 +256,7 @@ export const countries: CountryRoster[] = [
         initials: "MY",
         name: "Mayo",
         role: "Artist",
-        image: "/assets/mayo-40.jpg",
+        image: "/assets/mayo-40.png",
       },
       {
         initials: "GD",
