@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArtistasSearch } from "@/components/ArtistasSearch";
 import { InstagramIcon } from "@/components/InstagramIcon";
-import { LogoIcon } from "@/components/LogoIcon";
 import { artistsFlat } from "@/data/roster";
 
 /** Matches `public/assets/Logo Dale Play Publishing-01.png` (spaces URL-encoded for the browser). */
@@ -62,10 +61,6 @@ export default function HomePage() {
       </section>
 
       <footer>
-        <div className="footer-logo">
-          <LogoIcon gradientIdPrefix="footer-" className="logo-icon" />
-          <span className="footer-brand-name">Dale Play Publishing</span>
-        </div>
         <span className="footer-copy">
           © {new Date().getFullYear()} Dale Play Publishing. Todos los derechos reservados.
         </span>
