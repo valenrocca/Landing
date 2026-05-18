@@ -62,7 +62,6 @@ export function ArtistasSearch({ artists }: { artists: ArtistWithCountry[] }) {
               <div className="artist-info">
                 <div className="artist-country">{entry.countryLabel}</div>
                 <div className="artist-name">{entry.name}</div>
-                <span className="artist-badge">{entry.role}</span>
               </div>
             </div>
           ))
